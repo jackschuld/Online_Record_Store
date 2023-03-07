@@ -4,6 +4,7 @@ from reviews import views
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
 
 urlpatterns = [
-    path('', views.album_reviews),
-    path('<int:id>/', views.edit_review),
+    path('', views.post_review),
+    path('reviews/', views.album_reviews),
+    path('<int:review_id>/', views.edit_review),
 ]
