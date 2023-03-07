@@ -7,24 +7,24 @@ from .models import Album_Wishlist
 from .serializers import Album_Wishlist_Serializer
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 @permission_classes([AllowAny])
-def user_wishlist(request, user_id):
-    if request.method == 'GET':
-        albums = Album_Wishlist.objects.filter(user_id=user_id)
-        serializer = Album_Wishlist_Serializer(albums, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    elif request.method == 'POST':
-        serializer = Album_Wishlist_Serializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save(user_id=user_id)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+def get_wishlist(request, user_id):
+    albums = Album_Wishlist.objects.filter(user_id=user_id)
+    serializer = Album_Wishlist_Serializer(albums, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def add_album_to_wishlist(request, album_id):
+    serializer = Album_Wishlist_Serializer(data=request.data)
+    serializer.is_valid(raise_exception=True)
+    serializer.save(user=request.user, album_id=album_id)
+    return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['DELETE'])
-@permission_classes([AllowAny])
-def remove_from_wishlist(request, user_id, wishlist_id):
-    album = get_object_or_404(Album_Wishlist, user_id=user_id, id=wishlist_id)
+@permission_classes([IsAuthenticated])
+def remove_from_wishlist(request, wishlist_id):
+    album = get_object_or_404(Album_Wishlist, user=request.user, id=wishlist_id)
     album.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
