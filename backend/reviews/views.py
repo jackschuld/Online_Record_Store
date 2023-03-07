@@ -1,3 +1,4 @@
+from django.shortcuts import render, get_object_or_404
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -5,19 +6,30 @@ from rest_framework.decorators import api_view, permission_classes
 from .models import Review
 from .serializers import Review_Serializer
 
-# <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
 
-
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 @permission_classes([AllowAny])
 def album_reviews(request, album_id):
-    if request.method == 'GET':
-        reviews = Review.objects.filter(album_id=album_id)
-        serializer = Review_Serializer(reviews, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    elif request.method == 'POST':
+    reviews = Review.objects.filter(album_id=album_id)
+    serializer = Review_Serializer(reviews, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+    
+@api_view(['POST', 'PUT', 'DELETE'])
+@permission_classes([AllowAny])
+def edit_review(request, album_id, id):
+    if request.method == 'POST':
         serializer = Review_Serializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save(album_id=album_id)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        serializer.is_valid(raise_exception=True)
+        serializer.save(user_id=id, album_id=album_id)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    else:
+        review = get_object_or_404(Review, id=id)
+        if request.method == 'PUT':
+            serializer = Review_Serializer(review, data=request.data, partial=True)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        elif request.method == 'DELETE':
+            review.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+

@@ -4,5 +4,6 @@ from album_wishlists import views
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
 
 urlpatterns = [
-    path('<str:user_id>/', views.user_wishlist),
+    path('', views.user_wishlist),
+    path('<int:wishlist_id>/', views.remove_from_wishlist),
 ]
