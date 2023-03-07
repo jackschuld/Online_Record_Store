@@ -7,6 +7,7 @@ from .models import Album_Wishlist
 from .serializers import Album_Wishlist_Serializer
 
 
+# Gets user's wishlist based off provided user id
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def get_wishlist(request, user_id):
@@ -14,6 +15,7 @@ def get_wishlist(request, user_id):
     serializer = Album_Wishlist_Serializer(albums, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
+# Adds provided album to user's wishlist
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def add_album_to_wishlist(request, album_id):
@@ -22,6 +24,7 @@ def add_album_to_wishlist(request, album_id):
     serializer.save(user=request.user, album_id=album_id)
     return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+# Removes provided wishlist album from wishlist
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
 def remove_from_wishlist(request, wishlist_id):

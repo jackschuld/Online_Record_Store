@@ -7,6 +7,7 @@ from .models import Album_Collection
 from .serializers import Album_Collection_Serializer
 
 
+# Gets user's collection based off provided user id
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def get_collection(request, user_id):
@@ -14,6 +15,7 @@ def get_collection(request, user_id):
     serializer = Album_Collection_Serializer(albums, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
+# Adds provided album to user's collection
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def add_album_to_collection(request, album_id):
@@ -21,7 +23,8 @@ def add_album_to_collection(request, album_id):
     serializer.is_valid(raise_exception=True)
     serializer.save(user=request.user, album_id=album_id)
     return Response(serializer.data, status=status.HTTP_201_CREATED)
-    
+
+# Removes provided collection album from collection
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
 def remove_from_collection(request, collection_id):

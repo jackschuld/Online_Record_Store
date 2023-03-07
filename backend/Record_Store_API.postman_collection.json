@@ -13,13 +13,20 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5MDg4NjE5LCJpYXQiOjE2NzgyMjQ2MTksImp0aSI6Ijg2ZTQ0Y2I4ODYyZDQ2YTViZjIxNmRmYzM2Zjc0NjgzIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.0LOTDQKV5ZMgT0ilRKIuHROPAhknrYLV1DRedpuN1DA",
+						"type": "text",
+						"disabled": true
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/album_collections/1/",
+					"raw": "http://127.0.0.1:8000/api/album_collections/2/collection/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -31,7 +38,8 @@
 					"path": [
 						"api",
 						"album_collections",
-						"1",
+						"2",
+						"collection",
 						""
 					]
 				}
@@ -42,9 +50,16 @@
 			"name": "Get_User_Wishlist",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/album_wishlists/1/",
+					"raw": "http://127.0.0.1:8000/api/album_wishlists/2/wishlist/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -56,7 +71,8 @@
 					"path": [
 						"api",
 						"album_wishlists",
-						"1",
+						"2",
+						"wishlist",
 						""
 					]
 				}
@@ -68,6 +84,127 @@
 			"request": {
 				"method": "GET",
 				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reviews/4vXFiaDS8zuEl5bOUbW53x/reviews/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reviews",
+						"4vXFiaDS8zuEl5bOUbW53x",
+						"reviews",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add_Album_to_Collection",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5MDg4NjE5LCJpYXQiOjE2NzgyMjQ2MTksImp0aSI6Ijg2ZTQ0Y2I4ODYyZDQ2YTViZjIxNmRmYzM2Zjc0NjgzIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.0LOTDQKV5ZMgT0ilRKIuHROPAhknrYLV1DRedpuN1DA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"album_id\": \"43NNW7iDuAE8pIouzvwWWi\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/album_collections/43NNW7iDuAE8pIouzvwWWi/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"album_collections",
+						"43NNW7iDuAE8pIouzvwWWi",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add_Album_to_Wishlist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5MDg4NjE5LCJpYXQiOjE2NzgyMjQ2MTksImp0aSI6Ijg2ZTQ0Y2I4ODYyZDQ2YTViZjIxNmRmYzM2Zjc0NjgzIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.0LOTDQKV5ZMgT0ilRKIuHROPAhknrYLV1DRedpuN1DA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"album_id\": \"43NNW7iDuAE8pIouzvwWWi\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/album_wishlists/43NNW7iDuAE8pIouzvwWWi/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"album_wishlists",
+						"43NNW7iDuAE8pIouzvwWWi",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add_Review_to_Album",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5MDg4NjE5LCJpYXQiOjE2NzgyMjQ2MTksImp0aSI6Ijg2ZTQ0Y2I4ODYyZDQ2YTViZjIxNmRmYzM2Zjc0NjgzIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.0LOTDQKV5ZMgT0ilRKIuHROPAhknrYLV1DRedpuN1DA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"star_review\": 2,\r\n    \"written_review\": \"But a couple classics I suppose...\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "http://127.0.0.1:8000/api/reviews/4vXFiaDS8zuEl5bOUbW53x/",
 					"protocol": "http",
@@ -89,13 +226,19 @@
 			"response": []
 		},
 		{
-			"name": "Add_Album_to_Collection",
+			"name": "Update_Review",
 			"request": {
-				"method": "POST",
-				"header": [],
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5MDg4NjE5LCJpYXQiOjE2NzgyMjQ2MTksImp0aSI6Ijg2ZTQ0Y2I4ODYyZDQ2YTViZjIxNmRmYzM2Zjc0NjgzIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.0LOTDQKV5ZMgT0ilRKIuHROPAhknrYLV1DRedpuN1DA",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"album_id\": \"48D1hRORqJq52qsnUYZX56\"\r\n}",
+					"raw": "{\r\n    \"star_review\": 3,\r\n    \"written_review\": \"Too slow! But a couple of classics I suppose...\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -103,7 +246,71 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/album_collections/1/",
+					"raw": "http://127.0.0.1:8000/api/reviews/4vXFiaDS8zuEl5bOUbW53x/7/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reviews",
+						"4vXFiaDS8zuEl5bOUbW53x",
+						"7",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete_Review",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5MDg4NjE5LCJpYXQiOjE2NzgyMjQ2MTksImp0aSI6Ijg2ZTQ0Y2I4ODYyZDQ2YTViZjIxNmRmYzM2Zjc0NjgzIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.0LOTDQKV5ZMgT0ilRKIuHROPAhknrYLV1DRedpuN1DA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reviews/4vXFiaDS8zuEl5bOUbW53x/7/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reviews",
+						"4vXFiaDS8zuEl5bOUbW53x",
+						"7",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove_Album_from_Collection",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5MDg4NjE5LCJpYXQiOjE2NzgyMjQ2MTksImp0aSI6Ijg2ZTQ0Y2I4ODYyZDQ2YTViZjIxNmRmYzM2Zjc0NjgzIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.0LOTDQKV5ZMgT0ilRKIuHROPAhknrYLV1DRedpuN1DA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/album_collections/remove/6/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -115,138 +322,16 @@
 					"path": [
 						"api",
 						"album_collections",
-						"1",
+						"remove",
+						"6",
 						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Add_Album_to_Wishlist",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"album_id\": \"7Jr9fNx9IYWRgNmllirP3H\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
 						}
-					}
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/album_wishlists/1/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"album_wishlists",
-						"1",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Add_Review_to_Album",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"star_review\": 1,\r\n    \"written_review\": \"Too slow!\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/reviews/4vXFiaDS8zuEl5bOUbW53x/1/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"reviews",
-						"4vXFiaDS8zuEl5bOUbW53x",
-						"1",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update_Review",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"star_review\": 4,\r\n    \"written_review\": \"Great mostly instrumental album! I play it in the background while studying\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/reviews/7Jr9fNx9IYWRgNmllirP3H/2/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"reviews",
-						"7Jr9fNx9IYWRgNmllirP3H",
-						"2",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete_Review",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/reviews/4vXFiaDS8zuEl5bOUbW53x/4/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"reviews",
-						"4vXFiaDS8zuEl5bOUbW53x",
-						"4",
-						""
 					]
 				}
 			},
@@ -256,9 +341,15 @@
 			"name": "Remove_Album_from_Wishlist",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5MDg4NjE5LCJpYXQiOjE2NzgyMjQ2MTksImp0aSI6Ijg2ZTQ0Y2I4ODYyZDQ2YTViZjIxNmRmYzM2Zjc0NjgzIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.0LOTDQKV5ZMgT0ilRKIuHROPAhknrYLV1DRedpuN1DA",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/album_wishlists/1/2/",
+					"raw": "http://127.0.0.1:8000/api/album_wishlists/remove/5/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -270,34 +361,8 @@
 					"path": [
 						"api",
 						"album_wishlists",
-						"1",
-						"2",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Remove_Album_from_Collection",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/reviews/4vXFiaDS8zuEl5bOUbW53x/4/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"reviews",
-						"4vXFiaDS8zuEl5bOUbW53x",
-						"4",
+						"remove",
+						"5",
 						""
 					]
 				}
