@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'cars.apps.CarsConfig',
     'album_collections.apps.AlbumCollectionsConfig',
-    'album_wishlists.apps.AlbumWishlistsConfig'
+    'album_wishlists.apps.AlbumWishlistsConfig',
+    'reviews.apps.ReviewsConfig'
 ]
 
 MIDDLEWARE = [
