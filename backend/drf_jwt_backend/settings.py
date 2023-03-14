@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'cars.apps.CarsConfig',
     'album_collections.apps.AlbumCollectionsConfig',
     'album_wishlists.apps.AlbumWishlistsConfig',
-    'reviews.apps.ReviewsConfig'
+    'reviews.apps.ReviewsConfig',
 ]
 
 MIDDLEWARE = [
