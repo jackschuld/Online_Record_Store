@@ -11,14 +11,13 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import AlbumResults from "./components/AlbumResults/AlbumResults";
+import Album from "./components/Album/Album";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 function App() {
-
-  const [searchTerm, setSearchTerm] = useState('')
 
   async function getAccessToken(){
     const clientId = "1062ec374487407eb597e2e70e02a000";
@@ -47,7 +46,6 @@ function App() {
     const tokenData = await response.json();
     const spotifyToken = tokenData.access_token;
     localStorage.setItem('spotify-token', spotifyToken)
-    // localStorage.getItem('spotify-token')
   }
 
   useEffect(()=>{
@@ -62,11 +60,12 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <HomePage setSearchTerm={setSearchTerm}/>
+              <HomePage/>
             </PrivateRoute>
           }
         />
-        <Route path="/:searchTerm" element={<AlbumResults searchTerm={searchTerm}/>}/>
+        <Route path="/:searchTerm" element={<AlbumResults />}/>
+        <Route path="/:searchTerm/:searchTerm/:album_id" element={<Album />}/>
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
