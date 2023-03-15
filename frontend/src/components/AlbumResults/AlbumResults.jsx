@@ -14,10 +14,11 @@ const AlbumResults = () => {
       let response = await axios.get(`https://api.spotify.com/v1/search?q=${searchTerm}&type=album&limit=50`, {
         headers: {
           Accept: 'application/json',
-          Authorization: "Bearer " + localStorage.getItem('spotify-token'),
+          Authorization: "Bearer " + localStorage.getItem('s_token'),
           'Content-Type': 'application/json',
         },
       });
+      console.log(response.data.albums.items)
       setAlbums(response.data.albums.items);
       }
     fetchAlbums();

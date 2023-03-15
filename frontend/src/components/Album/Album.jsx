@@ -17,11 +17,10 @@ const Album = () => {
             let response = await axios.get(`https://api.spotify.com/v1/albums/${album_id}`, {
                 headers: {
                     Accept: 'application/json',
-                    Authorization: "Bearer " + localStorage.getItem('spotify-token'),
+                    Authorization: "Bearer " + localStorage.getItem('s_token'),
                     'Content-Type': 'application/json',
                 },
             });
-            console.log(response.data)
             setAlbum(response.data)
             setHeight(response.data.images[0].height)
             setUrl(response.data.images[0].url)

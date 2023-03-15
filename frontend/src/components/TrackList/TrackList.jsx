@@ -5,19 +5,19 @@ import PlaySongInterface from "../PlaySongInterface/PlaySongInterface";
 
 const TrackList = ({ album_id }) => {
 
-    const [tracks, setTracks] = useState([])
-    const [selectedTrack, setSelectedTrack] = useState([])
+    const [tracks, setTracks] = useState([]);
+    const [selectedTrack, setSelectedTrack] = useState([]);
+
 
     useEffect(() => {
         const fetchTracks = async () => {
             let response = await axios.get(`https://api.spotify.com/v1/albums/${album_id}/tracks`, {
                 headers: {
                     Accept: 'application/json',
-                    Authorization: "Bearer " + localStorage.getItem('spotify-token'),
+                    Authorization: "Bearer " + localStorage.getItem('s_token'),
                     'Content-Type': 'application/json',
                 },
             });
-            console.log(response.data)
             setTracks(response.data.items)
         }
         fetchTracks()
@@ -25,7 +25,6 @@ const TrackList = ({ album_id }) => {
 
     function handleSelection(track){
         setSelectedTrack(track)
-        console.log(track)
     }
 
     return ( 
