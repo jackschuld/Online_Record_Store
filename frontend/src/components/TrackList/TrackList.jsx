@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+import PlaySongInterface from "../PlaySongInterface/PlaySongInterface";
+
 const TrackList = ({ album_id }) => {
 
     const [tracks, setTracks] = useState([])
+    const [selectedTrack, setSelectedTrack] = useState([])
 
     useEffect(() => {
         const fetchTracks = async () => {
@@ -20,15 +23,23 @@ const TrackList = ({ album_id }) => {
         fetchTracks()
     }, [])
 
+    function handleSelection(track){
+        setSelectedTrack(track)
+        console.log(track)
+    }
+
     return ( 
         <div>
-            {tracks.map((track)=> {
-                return (
-                    <p>
-                        {track.track_number}. {track.name}
-                    </p>
-                )
-            })}
+            <PlaySongInterface selectedTrack={selectedTrack} setSelectedTrack={setSelectedTrack} tracks={tracks}/>
+            <ol>
+                {tracks.map((track)=> {
+                    return (
+                        <li onClick={() => handleSelection(track)}>
+                            {track.track_number}. {track.name}
+                        </li>
+                    )
+                })}
+            </ol>
         </div>
      );
 }

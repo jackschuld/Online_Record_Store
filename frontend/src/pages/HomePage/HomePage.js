@@ -11,7 +11,7 @@ const HomePage = () => {
   
   return (
     <div className="container">
-      <h3>Search by Decade</h3>
+      <h3>Albums by Decade</h3>
       <Decades/>
     </div>
   );

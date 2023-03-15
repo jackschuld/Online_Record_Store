@@ -42,13 +42,13 @@ const Album = () => {
                 <br/>
                 Release Date: {album.release_date}
                 <br/>
-                Rating: {album.popularity / 10}
+                Rating: {(album.popularity / 10) / 2}/5
                 <br/>
                 Number of Tracks: {album.total_tracks}
                 <br/>
                 Label: {album.label}
-                <TrackList album_id={album_id}/>
             </p>
+            <TrackList album_id={album_id}/>
         </div>
      );
 }
