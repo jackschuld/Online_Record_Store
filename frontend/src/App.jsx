@@ -6,6 +6,7 @@ import "./App.css";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import SearchPage from "./components/SearchPage/SearchPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -66,6 +67,7 @@ function App() {
         />
         <Route path="/:searchTerm" element={<AlbumResults />}/>
         <Route path="/:searchTerm/:searchTerm/:album_id" element={<Album />}/>
+        <Route path="/search" element={<SearchPage />}/>
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>

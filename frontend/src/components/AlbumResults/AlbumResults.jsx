@@ -11,7 +11,7 @@ const AlbumResults = () => {
 
   useEffect(() => {
     const fetchAlbums = async () => {
-      let response = await axios.get(`https://api.spotify.com/v1/search?q=year:${searchTerm}&type=album&limit=50`, {
+      let response = await axios.get(`https://api.spotify.com/v1/search?q=${searchTerm}&type=album&limit=50`, {
         headers: {
           Accept: 'application/json',
           Authorization: "Bearer " + localStorage.getItem('spotify-token'),

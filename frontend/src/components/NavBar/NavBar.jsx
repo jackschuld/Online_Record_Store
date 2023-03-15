@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import SearchBar from "../SearchPage/SearchPage";
 import "./NavBar.css";
 
 const Navbar = () => {
@@ -17,7 +18,7 @@ const Navbar = () => {
         <li className="brand">
           {/* Title at center of nav */}
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <a><b>Record Store</b> on Line Ave.</a>
+            <a><b>Record Store</b> on-Line Ave.</a>
           </Link>
         </li>
         <li>
@@ -30,10 +31,13 @@ const Navbar = () => {
               Profile
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a className="dropdown-item" href="#">{user.username}</a>
-              <a className="dropdown-item" href="#">Collection</a>
-              <a className="dropdown-item" href="#">Wishlist</a>
-              <a className="dropdown-item" href="#" onClick={logoutUser}>Logout</a>
+              <a className="dropdown-item">{user.username}</a>
+              <Link to={'/search'}>
+                <a className="dropdown-item">Search</a>
+              </Link>
+              <a className="dropdown-item">Collection</a>
+              <a className="dropdown-item">Wishlist</a>
+              <a className="dropdown-item" onClick={logoutUser}>Logout</a>
             </div>
           </div>
           )}
