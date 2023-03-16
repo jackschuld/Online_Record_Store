@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import TrackList from "../TrackList/TrackList";
+// import TrackList from "../TrackList/TrackList";
 
 const Album = () => {
 
     const {album_id} = useParams();
     const [album, setAlbum] = useState([])
     const [artist, setArtist] = useState('')
-    const [height, setHeight] = useState(0)
-    const [url, setUrl] = useState('')
-    const [width, setWidth] = useState(0)
+    const src = `https://open.spotify.com/embed?uri=${album.uri}`
+
 
     useEffect(() => {
         const fetchAlbum = async () => {
@@ -22,19 +21,15 @@ const Album = () => {
                 },
             });
             setAlbum(response.data)
-            setHeight(response.data.images[0].height)
-            setUrl(response.data.images[0].url)
-            setWidth(response.data.images[0].width)
             setArtist(response.data.artists[0].name)
         }
         fetchAlbum();
+        console.log(album)
     }, []);
 
     return ( 
         <div>
             <p>
-                <iframe scrolling="no" width={width} height={height} src={url}></iframe>
-                <br/>
                 <h1>{album.name}</h1>
                 <br/>
                 <h4>by: {artist}</h4>
@@ -47,7 +42,8 @@ const Album = () => {
                 <br/>
                 Label: {album.label}
             </p>
-            <TrackList album_id={album_id}/>
+            <iframe src={src} width="100%" height="800" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            {/* <TrackList album_id={album_id}/> */}
         </div>
      );
 }
