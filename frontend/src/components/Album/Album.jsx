@@ -1,9 +1,8 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import AuthContext from "../../context/AuthContext";
 import useAuth from "../../hooks/useAuth";
-
+import Reviews from "../Reviews/Reviews";
 
 const Album = () => {
 
@@ -28,7 +27,6 @@ const Album = () => {
             });
             setAlbum(response.data)
             setArtist(response.data.artists[0].name)
-            console.log(response.data)
         }
         fetchAlbum();
     }, []);
@@ -37,10 +35,7 @@ const Album = () => {
     async function addAlbumToCollection(newReview){
         if (localStorage.getItem("token")){
             let url = "http://127.0.0.1:8000/api/reviews/" + album_id + "/";
-            console.log(config)
-            console.log(url)
-            let response = await axios.post(url, newReview, config);
-            console.log(response);
+            await axios.post(url, newReview, config);
         }
         else {
             alert('Must be signed in!');
@@ -51,11 +46,9 @@ const Album = () => {
         if (localStorage.getItem("token")){
             event.preventDefault();
             let newReview = {
-                // user_id: user.id,
                 star_review: parseInt(rating),
                 written_review: review,
             };
-            console.log(newReview)
             addAlbumToCollection(newReview);
         }
     }
@@ -83,6 +76,8 @@ const Album = () => {
                         <button type='submit'>Favorite</button>
                     </div>
                 </form>
+                <br/>
+                <Reviews album_id={album_id} user={user}/>
             </p>
             <iframe src={src} width="100%" height="800" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         </div>
