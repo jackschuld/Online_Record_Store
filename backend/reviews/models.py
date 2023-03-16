@@ -6,7 +6,7 @@ from authentication.models import User
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     album_id = models.CharField(max_length=225, blank=False)
-    star_review = models.IntegerField(default=1, validators=[
+    star_review = models.FloatField(default=1, validators=[
             MaxValueValidator(5),
             MinValueValidator(0)
         ]

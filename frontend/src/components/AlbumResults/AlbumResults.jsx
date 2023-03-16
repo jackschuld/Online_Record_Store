@@ -18,7 +18,6 @@ const AlbumResults = () => {
           'Content-Type': 'application/json',
         },
       });
-      console.log(response.data.albums.items)
       setAlbums(response.data.albums.items);
       }
     fetchAlbums();
@@ -31,7 +30,6 @@ const AlbumResults = () => {
       <div className="thumbnails">
             {albums && albums.map((album) => {
               let { height, url, width } = album.images[1];
-              console.log(album.id)
               
               return(
                 <Link to={`/${searchTerm}/${album.id}`}>

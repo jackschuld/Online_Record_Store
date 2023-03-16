@@ -4,7 +4,7 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import Reviews from "../Reviews/Reviews";
 
-const Album = () => {
+const Album = ({ setSrc}) => {
 
     const [user, token, config] = useAuth();
     
@@ -13,9 +13,8 @@ const Album = () => {
     const [artist, setArtist] = useState('');
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(0);
-    const src = `https://open.spotify.com/embed?uri=${album.uri}`;
 
-
+    // Loads album
     useEffect(() => {
         const fetchAlbum = async () => {
             let response = await axios.get(`https://api.spotify.com/v1/albums/${album_id}`, {
@@ -25,31 +24,42 @@ const Album = () => {
                     'Content-Type': 'application/json',
                 },
             });
-            setAlbum(response.data)
-            setArtist(response.data.artists[0].name)
+            setAlbum(response.data);
+            setArtist(response.data.artists[0].name);
+            setSrc(`https://open.spotify.com/embed?uri=${album.uri}`);
         }
         fetchAlbum();
-    }, []);
+    }, [album]);
 
 
-    async function addAlbumToCollection(newReview){
+    // Posts review
+    async function leaveReview(newReview){
         if (localStorage.getItem("token")){
             let url = "http://127.0.0.1:8000/api/reviews/" + album_id + "/";
             await axios.post(url, newReview, config);
+            window.location.reload();
         }
         else {
             alert('Must be signed in!');
         }
     }
 
+    // Checks if review is formatted correctly
     function handleNewReview(event) {
         if (localStorage.getItem("token")){
             event.preventDefault();
-            let newReview = {
-                star_review: parseInt(rating),
-                written_review: review,
-            };
-            addAlbumToCollection(newReview);
+            if (rating <= 5 && rating >= 0){
+                let newReview = {
+                    user: user.username,
+                    star_review: parseFloat(rating),
+                    written_review: review,
+                };
+                leaveReview(newReview);
+                console.log(newReview)
+            }
+            else {
+                alert("Can only rate from 1 to 5");
+            }
         }
     }
 
@@ -72,7 +82,7 @@ const Album = () => {
                 <form onSubmit={handleNewReview}>
                     <label><b>Review:</b></label>
                     <div>
-                        <input style={{width: '150px'}} type="number" value={rating} onChange={(event) => setRating(event.target.value)}/>
+                        <input type="number" value={rating} onChange={(event) => setRating(parseFloat(event.target.value))}/>
                         <input placeholder="Leave the album a review!" value={review} onChange={(event) => setReview(event.target.value)}/>
                         <button type='submit'>Submit</button>
                     </div>
@@ -80,7 +90,6 @@ const Album = () => {
                 <br/>
                 <Reviews album_id={album_id} user={user} config={config}/>
             </p>
-            <iframe src={src} width="100%" height="800" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         </div>
      );
 }

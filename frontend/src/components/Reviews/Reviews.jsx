@@ -14,7 +14,7 @@ const Reviews = ({ album_id, user, config }) => {
 
     useEffect(()=>{
         getAllReviews();
-    }, [reviews])
+    }, [])
 
     let reviewList = reviews.map((review) => <Review review={review} user={user} album_id={album_id} config={config}/>)
     

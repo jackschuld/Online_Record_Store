@@ -13,12 +13,16 @@ import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import AlbumResults from "./components/AlbumResults/AlbumResults";
 import Album from "./components/Album/Album";
+import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
+
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
 
 function App() {
+  const [src, setSrc] = useState('');
 
   async function getAccessToken(){
     const clientId = "1062ec374487407eb597e2e70e02a000";
@@ -66,11 +70,12 @@ function App() {
           }
         />
         <Route path="/:searchTerm" element={<AlbumResults />}/>
-        <Route path="/:searchTerm/:album_id" element={<Album />}/>
+        <Route path="/:searchTerm/:album_id" element={<Album setSrc={setSrc}/>}/>
         <Route path="/search" element={<SearchPage />}/>
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
+      {src ? <MusicPlayer src={src}/> : setSrc('https://open.spotify.com/embed?uri=5MqyhhHbT13zsloD3uHhlQ')}
       <Footer />
     </div>
   );
