@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 
-const Reviews = ({ album_id, user }) => {
+const Reviews = ({ album_id, user, config }) => {
 
     const [reviews, setReviews] = useState([]);
 
@@ -16,7 +16,7 @@ const Reviews = ({ album_id, user }) => {
         getAllReviews();
     }, [reviews])
 
-    let reviewList = reviews.map((review) => <Review review={review} user={user}/>)
+    let reviewList = reviews.map((review) => <Review review={review} user={user} album_id={album_id} config={config}/>)
     
     return ( 
         <div>

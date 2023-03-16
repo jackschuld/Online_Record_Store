@@ -68,16 +68,17 @@ const Album = () => {
                 <br/>
                 Label: {album.label}
                 <br/>
+                <br/>
                 <form onSubmit={handleNewReview}>
-                    <label>Review</label>
+                    <label><b>Review:</b></label>
                     <div>
                         <input style={{width: '150px'}} type="number" value={rating} onChange={(event) => setRating(event.target.value)}/>
                         <input placeholder="Leave the album a review!" value={review} onChange={(event) => setReview(event.target.value)}/>
-                        <button type='submit'>Favorite</button>
+                        <button type='submit'>Submit</button>
                     </div>
                 </form>
                 <br/>
-                <Reviews album_id={album_id} user={user}/>
+                <Reviews album_id={album_id} user={user} config={config}/>
             </p>
             <iframe src={src} width="100%" height="800" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         </div>
