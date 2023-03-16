@@ -14,7 +14,7 @@ const TrackList = ({ album_id }) => {
             let response = await axios.get(`https://api.spotify.com/v1/albums/${album_id}/tracks`, {
                 headers: {
                     Accept: 'application/json',
-                    Authorization: "Bearer " + localStorage.getItem('s_token'),
+                    Authorization: "Bearer " + localStorage.getItem('spotify-token'),
                     'Content-Type': 'application/json',
                 },
             });
@@ -29,7 +29,7 @@ const TrackList = ({ album_id }) => {
 
     return ( 
         <div>
-            <PlaySongInterface selectedTrack={selectedTrack} setSelectedTrack={setSelectedTrack} tracks={tracks}/>
+            {/* <PlaySongInterface selectedTrack={selectedTrack} setSelectedTrack={setSelectedTrack} tracks={tracks}/> */}
             <ol>
                 {tracks.map((track)=> {
                     return (
