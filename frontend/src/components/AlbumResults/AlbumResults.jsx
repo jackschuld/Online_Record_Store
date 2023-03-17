@@ -35,10 +35,13 @@ const AlbumResults = () => {
                 <Link to={`/${searchTerm}/${album.id}`}>
                     <button><p key={album.id}>
                         <iframe scrolling="no" width={width} height={height} src={url}></iframe><br/>
-                        Title: {album.name}<br/>
-                        By: {album.artists.map((artist)=> (
+                        Title: <br/>
+                        {album.name}<br/>
+                        By: <br/>
+                        {album.artists.map((artist)=> (
                           artist.name
                           ))}<br/>
+                          <br/>
                     </p></button>
                 </Link>
             )})}

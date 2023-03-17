@@ -23,7 +23,8 @@ button {
   color: white;
   font-size: 1rem;
   font-family: inherit;
-  max-width: 100px;
+  max-width: 325px;
+  max-height: 470px;
   padding: 0.5rem 0.5rem;
 }
 

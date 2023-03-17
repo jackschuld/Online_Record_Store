@@ -4,7 +4,7 @@ import axios from "axios";
 import Reviews from "../Reviews/Reviews";
 import SaveAlbum from "../SaveAlbum/SaveAlbum";
 import useAuth from "../../hooks/useAuth";
-
+import RelatedVideos from "../RelatedVideos/RelatedVideos"
 
 const Album = ({ setSrc, src }) => {
 
@@ -91,6 +91,7 @@ const Album = ({ setSrc, src }) => {
                 </form>
                 <br/>
                 <Reviews album_id={album_id} user={user} config={config}/>
+                <RelatedVideos album={album}/>
             </p>
         </div>
      );

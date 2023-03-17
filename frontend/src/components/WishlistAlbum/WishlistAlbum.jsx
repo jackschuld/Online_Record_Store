@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const CollectionAlbum = ({ collectedAlbum, config }) => {
+const WishlistAlbum = ({ wishlistAlbum, config }) => {
 
     const [album, setAlbum] = useState([]);
     const [image, setImage] = useState([]);
@@ -11,7 +11,7 @@ const CollectionAlbum = ({ collectedAlbum, config }) => {
     
     useEffect(() => {
         const fetchAlbum = async () => {
-            let response = await axios.get(`https://api.spotify.com/v1/albums/${collectedAlbum.album_id}`, {
+            let response = await axios.get(`https://api.spotify.com/v1/albums/${wishlistAlbum.album_id}`, {
                 headers: {
                     Accept: 'application/json',
                     Authorization: "Bearer " + localStorage.getItem('spotify-token'),
@@ -26,7 +26,7 @@ const CollectionAlbum = ({ collectedAlbum, config }) => {
 
     
     async function handleDelete() {
-        let url = "http://127.0.0.1:8000/api/album_collections/remove/" + collectedAlbum.id + "/";
+        let url = "http://127.0.0.1:8000/api/album_wishlists/remove/" + wishlistAlbum.id + "/";
         await axios.delete(url, config);
         window.location.reload();
     }
@@ -35,7 +35,7 @@ const CollectionAlbum = ({ collectedAlbum, config }) => {
     if (image){
         return ( 
             <div>
-                <Link to={`/collection/${album.id}`}>
+                <Link to={`/wishlist/${album.id}`}>
                     <button>
                         <p key={album.id}>
                             <iframe scrolling="no" width={width} height={height} src={url}></iframe><br/>
@@ -49,4 +49,4 @@ const CollectionAlbum = ({ collectedAlbum, config }) => {
 
 }
  
-export default CollectionAlbum;
+export default WishlistAlbum;
