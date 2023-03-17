@@ -13,11 +13,11 @@ const Collection = () => {
             setCollectedAlbums(response.data);
         }
         fetchCollectedAlbums();
-    });
+    }, []);
 
 
     let collectionList = collectedAlbums.map((collectedAlbum) => <CollectionAlbum collectedAlbum={collectedAlbum} config={config}/>)
-
+    console.log(collectionList)
 
     return ( 
         <div>
