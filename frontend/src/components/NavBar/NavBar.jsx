@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
@@ -25,28 +24,25 @@ const Navbar = () => {
           {!user ? (
             <button onClick={() => navigate("/login")}>Login</button>
           ) : (
-          <div className="dropdown">
-            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Profile
+          <div>
+            <button className="btn btn-secondary" type="button" aria-haspopup="true" aria-expanded="false">
+              <Link to={'/profile'} className="link">{user.username}</Link>
             </button>
-            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <Link to={'/profile'}>
-                <a className="dropdown-item">{user.username}</a>
-              </Link>
-              <Link to={'/'}>
-                <a className="dropdown-item">Home</a>
-              </Link>
-              <Link to={'/search'}>
-                <a className="dropdown-item">Search</a>
-              </Link>
-              <Link to={'/profile/collection'}>
-                <a className="dropdown-item">Collection</a>
-              </Link>
-              <Link to={'/profile/wishlist'}>
-                <a className="dropdown-item">Wishlist</a>
-              </Link>
-              <a className="dropdown-item" onClick={logoutUser}>Logout</a>
-            </div>
+            <button className="btn btn-secondary" type="button" aria-haspopup="true" aria-expanded="false">
+              <Link to={'/'} className="link">Home</Link>
+            </button>
+            <button className="btn btn-secondary" type="button" aria-haspopup="true" aria-expanded="false">
+              <Link to={'/search'} className="link">Search</Link>
+            </button>
+            <button className="btn btn-secondary" type="button" aria-haspopup="true" aria-expanded="false">
+              <Link to={'/profile/collection'} className="link">Collection</Link>
+            </button>
+            <button className="btn btn-secondary" type="button" aria-haspopup="true" aria-expanded="false">
+              <Link to={'/profile/wishlist'} className="link">Wishlist</Link>
+            </button>
+            <button className="btn btn-secondary" type="button" aria-haspopup="true" aria-expanded="false">
+              <Link onClick={logoutUser} className="link">Logout</Link>
+            </button>
           </div>
           )}
         </li>

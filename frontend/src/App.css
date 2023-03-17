@@ -31,7 +31,7 @@ button {
 button:hover {
   cursor: pointer;
   color: black;
-  background-color: transparent;
+  background-color: salmon;
 }
 
 .container {

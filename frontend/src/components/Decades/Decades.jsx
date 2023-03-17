@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
+import './Decades.css'
 
 const Decades = () => {
 
 
     return ( 
-        <ol>
+        <ul>
             <li>
                 <Link to={'/year:1920-1929'}>
                 <button>1920-1929</button>
@@ -60,7 +61,7 @@ const Decades = () => {
                 <button>2020-2029</button>
                 </Link>
             </li>
-        </ol>
+        </ul>
      );
 }
  

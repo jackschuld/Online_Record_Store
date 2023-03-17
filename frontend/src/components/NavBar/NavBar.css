@@ -10,7 +10,7 @@ li {
 
 .navBar {
   background: slategray;
-  box-shadow: 4px 2px 5px gray;
+  box-shadow: 4px 2px 5px rgb(124, 93, 93);
   color: white;
   margin-bottom: 2rem;
   padding: 1.5rem 2rem;
@@ -18,18 +18,28 @@ li {
 
 .navBar button {
   background: indianred;
-  border: 2px solid white;
+  border: 2px solid black;
   color: white;
   padding: 0.4rem 0.5rem;
 }
 
 .navBar button:hover {
-  background: white;
-  color: slategray;
+  background: salmon;
+  color: black;
   cursor: pointer;
 }
 
 .brand {
   cursor: pointer;
   font-size: 2rem;
+}
+
+.link {
+  color: #FFF; /* change this to the desired font color */
+  text-decoration: none; /* remove the underline */
+}
+
+.link:hover {
+  color: #000; /* change this to the desired font color */
+  text-decoration: none; /* remove the underline */
 }
