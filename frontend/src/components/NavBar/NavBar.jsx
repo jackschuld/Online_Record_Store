@@ -25,26 +25,29 @@ const Navbar = () => {
           {!user ? (
             <button onClick={() => navigate("/login")}>Login</button>
           ) : (
-            <ul>
-              <li>
-              <Link to={'/search'}>
-                <button className="dropdown-item">Search</button>
+          <div className="dropdown">
+            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Profile
+            </button>
+            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <Link to={'/profile'}>
+                <a className="dropdown-item">{user.username}</a>
               </Link>
-              </li>
-              <li>
-                <div className="dropdown">
-                  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Profile
-                  </button>
-                  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a className="dropdown-item">{user.username}</a>
-                    <a className="dropdown-item">Collection</a>
-                    <a className="dropdown-item">Wishlist</a>
-                    <a className="dropdown-item" onClick={logoutUser}>Logout</a>
-                  </div>
-                </div>
-              </li>
-            </ul>
+              <Link to={'/'}>
+                <a className="dropdown-item">Home</a>
+              </Link>
+              <Link to={'/search'}>
+                <a className="dropdown-item">Search</a>
+              </Link>
+              <Link to={'/profile/collection'}>
+                <a className="dropdown-item">Collection</a>
+              </Link>
+              <Link to={'/profile/wishlist'}>
+                <a className="dropdown-item">Wishlist</a>
+              </Link>
+              <a className="dropdown-item" onClick={logoutUser}>Logout</a>
+            </div>
+          </div>
           )}
         </li>
       </ul>

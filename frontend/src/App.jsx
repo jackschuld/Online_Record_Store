@@ -14,6 +14,9 @@ import Footer from "./components/Footer/Footer";
 import AlbumResults from "./components/AlbumResults/AlbumResults";
 import Album from "./components/Album/Album";
 import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
+import Profile from "./components/Profile/Profile";
+import Collection from "./components/Collection/Collection";
+import Wishlist from "./components/Wishlist/Wishlist";
 
 
 // Util Imports
@@ -72,6 +75,9 @@ function App() {
         <Route path="/:searchTerm" element={<AlbumResults />}/>
         <Route path="/:searchTerm/:album_id" element={<Album setSrc={setSrc} src={src}/>}/>
         <Route path="/search" element={<SearchPage />}/>
+        <Route path="/profile" element={<Profile />}/>
+        <Route path="/profile/collection" element={<Collection />} />
+        <Route path="/profile/wishlist" element={<Wishlist />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
