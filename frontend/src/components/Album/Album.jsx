@@ -1,10 +1,12 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import useAuth from "../../hooks/useAuth";
 import Reviews from "../Reviews/Reviews";
+import SaveAlbum from "../SaveAlbum/SaveAlbum";
+import useAuth from "../../hooks/useAuth";
 
-const Album = ({ setSrc}) => {
+
+const Album = ({ setSrc, src }) => {
 
     const [user, token, config] = useAuth();
     
@@ -29,19 +31,14 @@ const Album = ({ setSrc}) => {
             setSrc(`https://open.spotify.com/embed?uri=${album.uri}`);
         }
         fetchAlbum();
-    }, [album]);
+    }, [src]);
 
 
     // Posts review
     async function leaveReview(newReview){
-        if (localStorage.getItem("token")){
-            let url = "http://127.0.0.1:8000/api/reviews/" + album_id + "/";
-            await axios.post(url, newReview, config);
-            window.location.reload();
-        }
-        else {
-            alert('Must be signed in!');
-        }
+        let url = "http://127.0.0.1:8000/api/reviews/" + album_id + "/";
+        await axios.post(url, newReview, config);
+        window.location.reload();
     }
 
     // Checks if review is formatted correctly
@@ -55,11 +52,13 @@ const Album = ({ setSrc}) => {
                     written_review: review,
                 };
                 leaveReview(newReview);
-                console.log(newReview)
             }
             else {
                 alert("Can only rate from 1 to 5");
             }
+        }
+        else {
+            alert('Must be signed in!');
         }
     }
 
@@ -69,6 +68,7 @@ const Album = ({ setSrc}) => {
                 <h1>{album.name}</h1>
                 <br/>
                 <h4>by: {artist}</h4>
+                <SaveAlbum user={user} album_id={album_id} config={config}/>
                 <br/>
                 Release Date: {album.release_date}
                 <br/>
@@ -83,9 +83,11 @@ const Album = ({ setSrc}) => {
                     <label><b>Review:</b></label>
                     <div>
                         <input type="number" value={rating} onChange={(event) => setRating(parseFloat(event.target.value))}/>
-                        <input placeholder="Leave the album a review!" value={review} onChange={(event) => setReview(event.target.value)}/>
-                        <button type='submit'>Submit</button>
                     </div>
+                    <div>
+                        <input placeholder="Leave the album a review!" value={review} onChange={(event) => setReview(event.target.value)}/>
+                    </div>
+                    <button type='submit'>Submit</button>
                 </form>
                 <br/>
                 <Reviews album_id={album_id} user={user} config={config}/>

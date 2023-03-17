@@ -70,12 +70,12 @@ function App() {
           }
         />
         <Route path="/:searchTerm" element={<AlbumResults />}/>
-        <Route path="/:searchTerm/:album_id" element={<Album setSrc={setSrc}/>}/>
+        <Route path="/:searchTerm/:album_id" element={<Album setSrc={setSrc} src={src}/>}/>
         <Route path="/search" element={<SearchPage />}/>
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
-      {src ? <MusicPlayer src={src}/> : setSrc('https://open.spotify.com/embed?uri=5MqyhhHbT13zsloD3uHhlQ')}
+      {src ? <MusicPlayer src={src}/> : <br/>}
       <Footer />
     </div>
   );
