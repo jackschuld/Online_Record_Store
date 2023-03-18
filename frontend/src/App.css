@@ -8,6 +8,10 @@
   box-sizing: inherit;
 }
 
+.row {
+  background-color: lightcoral;
+}
+
 html {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
@@ -23,8 +27,8 @@ button {
   color: white;
   font-size: 1rem;
   font-family: inherit;
-  max-width: 325px;
-  max-height: 470px;
+  max-width: 320px;
+  max-height: 450px;
   padding: 0.5rem 0.5rem;
 }
 

@@ -1,6 +1,8 @@
 // General Imports
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
@@ -17,6 +19,7 @@ import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
 import Profile from "./components/Profile/Profile";
 import Collection from "./components/Collection/Collection";
 import Wishlist from "./components/Wishlist/Wishlist";
+import Decades from "./components/Decades/Decades";
 
 
 // Util Imports
@@ -64,25 +67,26 @@ function App() {
     <div>
       <Navbar />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <PrivateRoute>
-              <HomePage/>
-            </PrivateRoute>
-          }
-        />
-        <Route path="/:searchTerm" element={<AlbumResults />}/>
-        <Route path="/:searchTerm/:album_id" element={<Album setSrc={setSrc} src={src}/>}/>
-        <Route path="/search" element={<SearchPage />}/>
-        <Route path="/profile" element={<Profile />}/>
-        <Route path="/profile/collection" element={<Collection />} />
-        <Route path="/profile/wishlist" element={<Wishlist />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<Decades/>}/>
       </Routes>
-      {src ? <MusicPlayer src={src}/> : <br/>}
-      <Footer />
+      <div className="row">
+        <div>
+          <Routes>
+            <Route path="/:searchTerm" element={<AlbumResults />}/>
+            <Route path="/:searchTerm/:album_id" element={<Album setSrc={setSrc} src={src}/>}/>
+            <Route path="/search" element={<SearchPage />}/>
+            <Route path="/profile" element={<Profile />}/>
+            <Route path="/profile/collection" element={<Collection />} />
+            <Route path="/profile/wishlist" element={<Wishlist />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/login" element={<LoginPage />} />
+          </Routes>
+        </div>
+        <div className=".col-md-5">
+          {src ? <MusicPlayer src={src}/> : <br/>}
+          <Footer />
+        </div>
+      </div>
     </div>
   );
 }

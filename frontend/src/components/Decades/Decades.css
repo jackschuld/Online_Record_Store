@@ -1,3 +1,11 @@
 .container {
     max-width: 1000px;
+    height: 100%;
+}
+
+.hometext {
+    font-family: 'Shadows Into Light';
+    font-size: xx-large;
+    display: flex;
+    justify-content: center;
 }

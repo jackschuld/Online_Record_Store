@@ -11,7 +11,6 @@ const HomePage = () => {
   
   return (
     <div className="container">
-      <h3>ALBUMS THROUGH THE DECADES</h3>
       <Decades/>
     </div>
   );

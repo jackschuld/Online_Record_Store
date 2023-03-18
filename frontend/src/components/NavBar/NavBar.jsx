@@ -24,26 +24,33 @@ const Navbar = () => {
           {!user ? (
             <button onClick={() => navigate("/login")}>Login</button>
           ) : (
-          <div>
-            <button className="btn btn-secondary" type="button" aria-haspopup="true" aria-expanded="false">
-              <Link to={'/profile'} className="link">{user.username}</Link>
-            </button>
-            <button className="btn btn-secondary" type="button" aria-haspopup="true" aria-expanded="false">
+          <span>
+            <button className="btn" type="button" aria-haspopup="true" aria-expanded="false">
               <Link to={'/'} className="link">Home</Link>
             </button>
-            <button className="btn btn-secondary" type="button" aria-haspopup="true" aria-expanded="false">
+            <button className="btn" type="button" aria-haspopup="true" aria-expanded="false">
               <Link to={'/search'} className="link">Search</Link>
             </button>
-            <button className="btn btn-secondary" type="button" aria-haspopup="true" aria-expanded="false">
-              <Link to={'/profile/collection'} className="link">Collection</Link>
-            </button>
-            <button className="btn btn-secondary" type="button" aria-haspopup="true" aria-expanded="false">
-              <Link to={'/profile/wishlist'} className="link">Wishlist</Link>
-            </button>
-            <button className="btn btn-secondary" type="button" aria-haspopup="true" aria-expanded="false">
-              <Link onClick={logoutUser} className="link">Logout</Link>
-            </button>
-          </div>
+            <span class="dropdown">
+              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                {user.username}
+              </button>
+              <span class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item">
+                  <Link to={'/profile'}>Profile</Link>
+                </a>
+                <a>
+                  <Link to={'/profile/collection'} class="dropdown-item">Collection</Link>
+                </a>
+                <a>
+                  <Link to={'/profile/wishlist'} class="dropdown-item">Wishlist</Link>
+                </a>
+                <a>
+                  <Link onClick={logoutUser} class="dropdown-item">Logout</Link>
+                </a>
+              </span>
+            </span>
+          </span>
           )}
         </li>
       </ul>

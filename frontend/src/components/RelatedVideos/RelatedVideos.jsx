@@ -6,7 +6,7 @@ const RelatedVideos = ({ album }) => {
 
     useEffect(() => {
         async function getVideoResults() {
-            let url = `https://youtube.googleapis.com/youtube/v3/search?maxResults=8&type=video&part=snippet&q=${album.name}-album-video&key=AIzaSyBWX8kjBe9QA7018GxCstMEA3sKaAkr0zM`;
+            let url = `https://youtube.googleapis.com/youtube/v3/search?maxResults=8&type=video&part=snippet&q=${album.name}-album-video&key=AIzaSyAA6Tm4VdnvNbJWOcDPaw3B3huwt5V_bvQ`;
             let response = await axios.get(url);
             setVideos(response.data.items);
             console.log(response.data.items)

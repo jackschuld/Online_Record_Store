@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Link, useParams } from 'react-router-dom';
+import "./AlbumResults.css"
 import axios from "axios";
 
 const AlbumResults = () => {
@@ -27,15 +28,14 @@ const AlbumResults = () => {
   if (searchTerm){
 
     return (
-      <div className="thumbnails">
+      <div className="results">
             {albums && albums.map((album) => {
               let { height, url, width } = album.images[1];
               
               return(
-                <Link to={`/${searchTerm}/${album.id}`}>
+                <Link className="thumbnails" to={`/${searchTerm}/${album.id}`}>
                     <button><p key={album.id}>
                         <iframe scrolling="no" width={width} height={height} src={url}></iframe><br/>
-                        Title: <br/>
                         {album.name}<br/>
                         By: <br/>
                         {album.artists.map((artist)=> (

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import "./SearchPage.css"
 
 const SearchPage = () => {
 
@@ -14,9 +15,7 @@ const SearchPage = () => {
                 onChange={(event) => setSearchTerm(event.target.value)}
                 />
             <Link to={`/${searchTerm}`}>
-                <button type="submit">
-                Search
-                </button>
+                <button type="submit" placeholder="Search by album, artist, song">Search</button>
             </Link>
         </form>
      );
