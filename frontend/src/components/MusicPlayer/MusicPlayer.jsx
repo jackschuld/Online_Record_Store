@@ -1,3 +1,5 @@
+import "./MusicPlayer.css"
+
 const MusicPlayer = ({src}) => {
     
     return ( 

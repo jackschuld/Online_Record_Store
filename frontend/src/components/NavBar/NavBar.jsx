@@ -22,7 +22,9 @@ const Navbar = () => {
         <li>
           {/* At the right, profile dropdown if logged in. Login button if not */}
           {!user ? (
-            <button onClick={() => navigate("/login")}>Login</button>
+            <span>
+              <button className="btn" type="button" onClick={() => navigate("/login")}>Login</button>
+            </span>
           ) : (
           <span>
             <button className="btn" type="button" aria-haspopup="true" aria-expanded="false">

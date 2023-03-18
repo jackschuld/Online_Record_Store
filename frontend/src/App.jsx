@@ -66,12 +66,10 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Decades/>}/>
-      </Routes>
       <div className="row">
-        <div>
+        <div className="col-md-8">
           <Routes>
+            <Route path="/" element={<Decades/>}/>
             <Route path="/:searchTerm" element={<AlbumResults />}/>
             <Route path="/:searchTerm/:album_id" element={<Album setSrc={setSrc} src={src}/>}/>
             <Route path="/search" element={<SearchPage />}/>
@@ -82,8 +80,8 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
           </Routes>
         </div>
-        <div className=".col-md-5">
-          {src ? <MusicPlayer src={src}/> : <br/>}
+        <div className="col-md-4">
+          {src ? <MusicPlayer src={src}/> : <MusicPlayer src={"https://open.spotify.com/embed?uri=spotify:album:5MqyhhHbT13zsloD3uHhlQ"}/>}
           <Footer />
         </div>
       </div>

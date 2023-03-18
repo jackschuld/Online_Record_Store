@@ -8,11 +8,6 @@ const Decades = () => {
         <div>
             <ul className="container">
                 <li>
-                    <Link to={'/year:1920-1929'}>
-                    <button>1920-1929</button>
-                    </Link>
-                </li>
-                <li>
                     <Link to={'/year:1930-1939'}>
                     <button>1930-1939</button>
                     </Link>
@@ -64,8 +59,13 @@ const Decades = () => {
                 </li>
             </ul>
             <br/>
-            <p className="hometext">Not sure where to start?</p>
-            <p className="hometext"> Search by decade above!</p>
+            <div>
+                <br/>
+                <p className="hometext">Not sure where to start?</p>
+                <br/>
+                <p className="hometext"> Search by decade above!</p>
+                <br/>
+            </div>
         </div>
      );
 }
