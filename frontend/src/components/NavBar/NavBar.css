@@ -9,9 +9,10 @@ li {
 }
 
 .navBar {
-  background: slategray;
   color: white;
   padding: 1.5rem 5rem;
+  border-bottom: 1px solid #FFF;
+  margin-bottom: 25px;
 }
 
 .navBar button {
@@ -30,11 +31,11 @@ li {
 }
 
 .link {
-  color: #FFF; /* change this to the desired font color */
-  text-decoration: none; /* remove the underline */
+  color: #FFF;
+  text-decoration: none; 
 }
 
 .link:hover {
-  color: #000; /* change this to the desired font color */
-  text-decoration: none; /* remove the underline */
+  color: #000; 
+  text-decoration: none; 
 }

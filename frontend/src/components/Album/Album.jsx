@@ -4,7 +4,8 @@ import axios from "axios";
 import Reviews from "../Reviews/Reviews";
 import SaveAlbum from "../SaveAlbum/SaveAlbum";
 import useAuth from "../../hooks/useAuth";
-import RelatedVideos from "../RelatedVideos/RelatedVideos"
+import RelatedVideos from "../RelatedVideos/RelatedVideos";
+import "./Album.css";
 
 const Album = ({ setSrc, src }) => {
 
@@ -31,6 +32,7 @@ const Album = ({ setSrc, src }) => {
             setSrc(`https://open.spotify.com/embed?uri=${album.uri}`);
         }
         fetchAlbum();
+        console.log("hi")
     }, [src]);
 
 
@@ -45,10 +47,11 @@ const Album = ({ setSrc, src }) => {
     function handleNewReview(event) {
         if (localStorage.getItem("token")){
             event.preventDefault();
-            if (rating <= 5 && rating >= 0){
+            let finalRating = rating / 10;
+            if (finalRating <= 5 && finalRating >= 0){
                 let newReview = {
                     user: user.username,
-                    star_review: parseFloat(rating),
+                    star_review: parseFloat(finalRating),
                     written_review: review,
                 };
                 leaveReview(newReview);
@@ -63,36 +66,46 @@ const Album = ({ setSrc, src }) => {
     }
 
     return ( 
-        <div>
-            <p>
-                <h1>{album.name}</h1>
-                <br/>
-                <h4>by: {artist}</h4>
-                <SaveAlbum user={user} album_id={album_id} config={config}/>
-                <br/>
-                Release Date: {album.release_date}
-                <br/>
-                Rating: {(album.popularity / 10) / 2}/5
-                <br/>
-                Number of Tracks: {album.total_tracks}
-                <br/>
-                Label: {album.label}
-                <br/>
-                <br/>
-                <form onSubmit={handleNewReview}>
-                    <label><b>Review:</b></label>
-                    <div>
-                        <input type="number" value={rating} onChange={(event) => setRating(parseFloat(event.target.value))}/>
-                    </div>
-                    <div>
-                        <input placeholder="Leave the album a review!" value={review} onChange={(event) => setReview(event.target.value)}/>
-                    </div>
-                    <button type='submit'>Submit</button>
-                </form>
-                <br/>
-                <Reviews album_id={album_id} user={user} config={config}/>
-                <RelatedVideos album={album}/>
-            </p>
+        <div className="album-description">
+            <div className="row">
+                <div className="col-md-8">
+                    <p>
+                        <h1>{album.name}</h1>
+                        <br/>
+                        <h4>by: {artist}</h4>
+                        <SaveAlbum user={user} album_id={album_id} config={config}/>
+                        <br/>
+                        Release Date: {album.release_date}
+                        <br/>
+                        Rating: {(album.popularity / 10) / 2}/5
+                        <br/>
+                        Number of Tracks: {album.total_tracks}
+                        <br/>
+                        Label: {album.label}
+                        <br/>
+                        <br/>
+                        <form className="review-form" onSubmit={handleNewReview}>
+                            <label><b>Leave a review:</b></label>
+                            <br/>
+                            <div className="slidecontainer">
+                                <input type="range" min="0" max="50" value={rating} class="slider" id="myRange" onChange={(event) => setRating(parseFloat(event.target.value))}/>
+                                <p>Value: {rating / 10}</p>
+                            </div>
+                            <br/>
+                            <div className="written-review">
+                                <p>Write your thoughts:</p>
+                                <input placeholder="" value={review} onChange={(event) => setReview(event.target.value)}/>
+                            </div>
+                            <button type='submit'>Submit</button>
+                        </form>
+                        <br/>
+                        <Reviews album_id={album_id} user={user} config={config}/>
+                    </p>
+                </div>
+                <div className="col-md-4">
+                    <RelatedVideos album={album}/>
+                </div>
+            </div>
         </div>
      );
 }

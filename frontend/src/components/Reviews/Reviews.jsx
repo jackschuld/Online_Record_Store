@@ -1,7 +1,7 @@
 import Review from "../Review/Review.jsx"
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-
+import "./Reviews.css"
 
 const Reviews = ({ album_id, user, config }) => {
 
@@ -19,7 +19,7 @@ const Reviews = ({ album_id, user, config }) => {
     let reviewList = reviews.map((review) => <Review review={review} user={user} album_id={album_id} config={config}/>)
     
     return ( 
-        <div>
+        <div className="reviews">
             <h2>Reviews</h2>
             {reviewList.reverse()}
         </div>

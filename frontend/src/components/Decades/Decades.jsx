@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SearchPage from "../SearchPage/SearchPage";
 import './Decades.css'
 
 const Decades = () => {
@@ -59,12 +60,13 @@ const Decades = () => {
                 </li>
             </ul>
             <br/>
-            <div>
+            <div className="container">
                 <br/>
                 <p className="hometext">Not sure where to start?</p>
+                <p className="hometext"> Search by decade above...</p>
+                <p className="hometext"> ...or search albums below!</p>
                 <br/>
-                <p className="hometext"> Search by decade above!</p>
-                <br/>
+                <SearchPage />
             </div>
         </div>
      );

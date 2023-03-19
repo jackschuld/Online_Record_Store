@@ -47,8 +47,8 @@ const SaveAlbum = ({ user, album_id, config }) => {
 
     return ( 
         <div>
-            <button onClick={handleAlbumCollection}>Save to Collection</button>
-            <button onClick={handleAlbumWishlist}>Save to Wishlist</button>
+            <button onClick={handleAlbumCollection}>Add to Collection</button>
+            <button onClick={handleAlbumWishlist}>Add to Wishlist</button>
         </div>
      );
 }

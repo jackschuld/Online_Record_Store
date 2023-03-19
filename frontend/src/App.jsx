@@ -65,9 +65,9 @@ function App() {
 
   return (
     <div>
-      <Navbar />
       <div className="row">
         <div className="col-md-8">
+          <Navbar />
           <Routes>
             <Route path="/" element={<Decades/>}/>
             <Route path="/:searchTerm" element={<AlbumResults />}/>
@@ -79,10 +79,10 @@ function App() {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage />} />
           </Routes>
+          <Footer />
         </div>
         <div className="col-md-4">
           {src ? <MusicPlayer src={src}/> : <MusicPlayer src={"https://open.spotify.com/embed?uri=spotify:album:5MqyhhHbT13zsloD3uHhlQ"}/>}
-          <Footer />
         </div>
       </div>
     </div>

@@ -10,7 +10,10 @@
 }
 
 .row {
-  background-color: beige;
+  background-image: url('vinyl.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 html {
@@ -25,6 +28,7 @@ p {
 button {
   background-color: indianred;
   border: 2px solid black;
+  border-radius: 8px;
   color: white;
   font-size: 1rem;
   font-family: inherit;

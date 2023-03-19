@@ -1,4 +1,5 @@
 import axios from "axios";
+import "./Review.css";
 
 const Review = ({ review, user, album_id, config }) => {
 
@@ -9,7 +10,7 @@ const Review = ({ review, user, album_id, config }) => {
     }
 
     return ( 
-        <div>
+        <div className="review">
             <h3>@{review.username}:</h3>
             <p>
             Rating: {review.star_review} / 5
