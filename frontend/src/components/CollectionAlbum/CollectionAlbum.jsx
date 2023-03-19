@@ -34,15 +34,15 @@ const CollectionAlbum = ({ collectedAlbum, config }) => {
 
     if (image){
         return ( 
-            <div>
-                <Link to={`/collection/${album.id}`}>
+            <div className="col-or-wish">
+                <Link className="col-or-wish" to={`/collection/${album.id}`}>
                     <button>
                         <p key={album.id}>
                             <iframe scrolling="no" width={width} height={height} src={url}></iframe><br/>
                         </p>
                     </button>
                 </Link>
-                <button onClick={handleDelete}>Remove</button>
+                <button className="remove-button" onClick={handleDelete}>Remove</button>
             </div>
         );
     }

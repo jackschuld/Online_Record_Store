@@ -34,7 +34,7 @@ const WishlistAlbum = ({ wishlistAlbum, config }) => {
 
     if (image){
         return ( 
-            <div>
+            <div className="col-or-wish">
                 <Link to={`/wishlist/${album.id}`}>
                     <button>
                         <p key={album.id}>

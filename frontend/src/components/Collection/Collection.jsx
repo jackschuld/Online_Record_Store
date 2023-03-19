@@ -19,7 +19,7 @@ const Collection = () => {
     let collectionList = collectedAlbums.map((collectedAlbum) => <CollectionAlbum collectedAlbum={collectedAlbum} config={config}/>)
 
     return ( 
-        <div>
+        <div className="col-or-wish">
             <h3>Collection</h3>
             <p>Below are the albums that @{user.username} has collected!</p>
             {collectionList.reverse()}

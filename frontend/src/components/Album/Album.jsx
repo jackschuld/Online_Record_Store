@@ -85,7 +85,7 @@ const Album = ({ setSrc, src }) => {
                         <br/>
                         <br/>
                         <form className="review-form" onSubmit={handleNewReview}>
-                            <label><b>Leave a review:</b></label>
+                            <label><b>Leave '{album.name}' a review:</b></label>
                             <br/>
                             <div className="slidecontainer">
                                 <input type="range" min="0" max="50" value={rating} class="slider" id="myRange" onChange={(event) => setRating(parseFloat(event.target.value))}/>

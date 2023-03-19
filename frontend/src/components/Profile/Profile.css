@@ -1,0 +1,13 @@
+.col-or-wish,
+.col-or-wish > h3,
+.col-or-wish > p {
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.remove-button {
+    margin-bottom: 50px;
+}
