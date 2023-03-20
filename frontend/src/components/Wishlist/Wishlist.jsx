@@ -20,8 +20,8 @@ const Wishlist = () => {
 
     return ( 
         <div className="col-or-wish">
-            <h3>Collection</h3>
-            <p>Below are the albums that @{user.username} has collected!</p>
+            <h3>Wishlist</h3>
+            <p>Below are the albums that @{user.username} wants!</p>
             {wishlistList.reverse()}
         </div>
      );
