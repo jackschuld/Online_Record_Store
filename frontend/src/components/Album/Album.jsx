@@ -32,7 +32,6 @@ const Album = ({ setSrc, src }) => {
             setSrc(`https://open.spotify.com/embed?uri=${album.uri}`);
         }
         fetchAlbum();
-        console.log("hi")
     }, [src]);
 
 
@@ -73,7 +72,7 @@ const Album = ({ setSrc, src }) => {
                         <h1>{album.name}</h1>
                         <br/>
                         <h4>by: {artist}</h4>
-                        <SaveAlbum user={user} album_id={album_id} config={config}/>
+                        <SaveAlbum user={user} id_of_album={album_id} config={config}/>
                         <br/>
                         Release Date: {album.release_date}
                         <br/>
