@@ -20,7 +20,7 @@ const Reviews = ({ album_id, user, config }) => {
     
     return ( 
         <div className="reviews">
-            <h2>Reviews</h2>
+            <h2>Reviews:</h2>
             {reviewList.reverse()}
         </div>
      );
